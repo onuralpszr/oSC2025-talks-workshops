@@ -1,0 +1,331 @@
+[project]
+name = "osc2025-talks-workshops"
+version = "0.1.0"
+description = "openSUSE Conference 2025 Talks and Workshops"
+authors = [
+    { name = "Onuralp SEZER", email = "thunderbirdtr@gmail.com" },
+    { name = "Onurcan KARAMAN", email = "onurcankaraman340@gmail.com" },
+]
+license = {text = "Apache License 2.0"}
+
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Software Development",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Typing :: Typed",
+    "Operating System :: POSIX",
+    "Operating System :: Unix",
+    "Operating System :: MacOS",
+    "Operating System :: Microsoft :: Windows",
+]
+
+keywords = [
+    "openSUSE",
+    "OSC2025",
+    "Conference",
+    "Workshops",
+    "Talks",
+    "AI",
+    "Machine Learning",
+    "Deep Learning",
+    "PyTorch",
+    "Transformers",
+]
+
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "datasets>=3.6.0",
+    "huggingface-hub>=0.32.6",
+    "jupyterlab>=4.4.3",
+    "numpy>=2.3.0",
+    "pillow>=11.2.1",
+    "smolagents[gradio,litellm,mcp,toolkit,torch]>=1.18.0",
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "transformers>=4.52.4",
+    "typer>=0.16.0",
+    "wandb>=0.20.1",
+]
+
+
+[project.optional-dependencies]
+
+cpu = [
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+]
+
+cu126 = [
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+]
+
+cu124 = [
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+]
+
+cu118 = [
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+]
+
+rocm61 = [
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "pytorch-triton-rocm>=2.0.0",
+]
+
+rocm624 = [
+    "torch>=2.6.0",
+    "torchvision>=0.21.0",
+    "pytorch-triton-rocm>=2.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "uv>=0.4.20",
+    "pytest>=8.3.3",
+    "ruff>=0.6.9",
+    "bandit>=1.8.3",
+    "mypy>=1.15.0",
+    "pre-commit>=4.2.0",
+]
+
+docs = [
+    "jupyter>=1.1.1",
+    "mkdocs>=1.6.1",
+    "mkdocs-glightbox>=0.4.0",
+    "mkdocs-jupyter>=0.25.1",
+    "mkdocs-material>=9.6.11",
+    "mkdocs-minify-plugin>=0.8.0",
+    "mkdocstrings>=0.29.1",
+    "mkdocstrings-python>=1.16.10",
+    "mike>=2.1.3",
+]
+
+build = [
+    "twine>=5.1.1",
+    "wheel>=0.40",
+    "build>=0.10"
+]
+
+mypy-types = [
+    "types-aiofiles>=24.1.0.20250326",
+    "types-requests>=2.32.0.20250328",
+    "types-tqdm>=4.67.0.20250417",
+]
+
+[tool.uv]
+
+conflicts = [
+    [
+        { extra = "cpu" },
+        { extra = "cu118" },
+        { extra = "cu124" },
+        { extra = "cu126" },
+        { extra = "rocm61" },
+        { extra = "rocm624" },
+    ],
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu", extra = "cpu" },
+    { index = "pytorch-cu118", extra = "cu118", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-cu124", extra = "cu124", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-cu126", extra = "cu126", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-rocm61", extra = "rocm61", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-rocm624", extra = "rocm624", marker = "sys_platform != 'darwin'"},
+]
+torchvision = [
+    { index = "pytorch-cpu", extra = "cpu" },
+    { index = "pytorch-cu118", extra = "cu118", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-cu124", extra = "cu124", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-cu126", extra = "cu126", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-rocm61", extra = "rocm61", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-rocm624", extra = "rocm624", marker = "sys_platform != 'darwin'"},
+]
+
+pytorch-triton-rocm = [
+    { index = "pytorch-rocm61", extra = "rocm61", marker = "sys_platform != 'darwin'"},
+    { index = "pytorch-rocm624", extra = "rocm624", marker = "sys_platform != 'darwin'"},
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu118"
+url = "https://download.pytorch.org/whl/cu118"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu124"
+url = "https://download.pytorch.org/whl/cu124"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-rocm61"
+url = "https://download.pytorch.org/whl/rocm6.1"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-rocm624"
+url = "https://download.pytorch.org/whl/rocm6.2.4"
+explicit = true
+
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["trackers"]
+
+[tool.bandit]
+target = ["test", "trackers"]
+tests = ["B201", "B301", "B318", "B314", "B303", "B413", "B412"]
+
+[tool.ruff]
+target-version = "py39"
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+    "yarn-error.log",
+    "yarn.lock",
+    "docs",
+]
+
+line-length = 88
+indent-width = 4
+
+[tool.ruff.lint]
+# Enable pycodestyle (`E`) and Pyflakes (`F`) codes by default.
+select = ["E", "F", "I", "A", "Q", "W", "RUF"]
+ignore = []
+# Allow autofix for all enabled rules (when `--fix`) is provided.
+fixable = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "I",
+    "N",
+    "Q",
+    "S",
+    "T",
+    "W",
+    "ANN",
+    "ARG",
+    "BLE",
+    "COM",
+    "DJ",
+    "DTZ",
+    "EM",
+    "ERA",
+    "EXE",
+    "FBT",
+    "ICN",
+    "INP",
+    "ISC",
+    "NPY",
+    "PD",
+    "PGH",
+    "PIE",
+    "PL",
+    "PT",
+    "PTH",
+    "PYI",
+    "RET",
+    "RSE",
+    "RUF",
+    "SIM",
+    "SLF",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "YTT",
+]
+unfixable = []
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+pylint.max-args = 5 # Default is 5
+
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "double"
+multiline-quotes = "double"
+docstring-quotes = "double"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402", "F401"]
+
+[tool.ruff.lint.mccabe]
+# Flag errors (`C901`) whenever the complexity level exceeds 10.
+max-complexity = 10
+
+[tool.ruff.lint.isort]
+order-by-type = true
+no-sections = false
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+[tool.pytest.ini_options]
+pythonpath = "."
+testpaths = ["test"]
