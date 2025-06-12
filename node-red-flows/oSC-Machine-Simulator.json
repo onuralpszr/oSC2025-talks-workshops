@@ -1,0 +1,380 @@
+[
+    {
+        "id": "56231e7c9bca1bef",
+        "type": "tab",
+        "label": "oSC Machine Simulator",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "5d52ad7f9dea39fa",
+        "type": "redis-out",
+        "z": "56231e7c9bca1bef",
+        "server": "a0efbb89.5e42d8",
+        "command": "rpush",
+        "name": "",
+        "topic": "",
+        "obj": false,
+        "x": 840,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "6787c9e6d9f7662c",
+        "type": "redis-instance",
+        "z": "56231e7c9bca1bef",
+        "server": "a0efbb89.5e42d8",
+        "name": "",
+        "topic": "redis",
+        "location": "flow",
+        "x": 70,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "b10a7c3cf9749dbf",
+        "type": "inject",
+        "z": "56231e7c9bca1bef",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "46f1e53e8a69ad59",
+                "2b2662f977602f7c",
+                "f299a3affa54d1cd",
+                "03ecf691f7df2050",
+                "d21cd5e85e019339",
+                "1d778e2ed2686f3b",
+                "ad516d550e217986",
+                "7c39dcec85cd849f",
+                "5e3daafa77b00c2f",
+                "68f56d83b7976d11",
+                "75a95d0f3cc6878f",
+                "904eb1ed5e3a9710",
+                "3a14572b23712295"
+            ]
+        ]
+    },
+    {
+        "id": "46f1e53e8a69ad59",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "function 1",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nmsg.payload = {\n    status: status,\n    spindleCurrentRPM: getRandom(0, 5000),\n    machineLoadPercent: getRandom(0, 100),\n    shiftCounter: newShiftCounter,\n    totalPartCount: newTotalCounter,\n    feedRate: getRandom(0, 20000),\n    overridePercent: getRandom(0, 150),\n    positionX: getRandom(-1000, 1000, 3),\n    positionY: getRandom(-1000, 1000, 3),\n    positionZ: getRandom(-1000, 1000, 3),\n    runTimeMillis: getRandom(0, 99999999),\n    startTimeMillis: getRandom(100000000, 999999999),\n    mainProgramNumber: getRandom(0, 1000),\n    subProgramNumber: getRandom(0, 20),\n    feedSpeed: getRandom(0, 500),\n    alarmStatus: alarm,\n    toolNumber: getRandom(0, 20),\n    statusRunFlag: getRandom(0, 1),\n    engine1Speed: getRandom(0, 10),\n    engine2Speed: getRandom(0, 10),\n    engine3Speed: getRandom(0, 10),\n    engine4Speed: getRandom(0, 10),\n    engine5Speed: getRandom(0, 10),\n    engine6Speed: getRandom(0, 10),\n    engine1Current: getRandom(-50, 50),\n    engine2Current: getRandom(-50, 50),\n    engine3Current: getRandom(-50, 50),\n    engine4Current: getRandom(-50, 50),\n    engine5Current: getRandom(-50, 50),\n    engine6Current: getRandom(-50, 50),\n    runState1: getRandom(0, 1),\n    runState2: getRandom(0, 1),\n    operationMode: mod,\n    programNumber: getRandom(1000, 9999)\n};\n\n// Save updated counters to context for next run\nflow.set(\"lastShiftCounter\", newShiftCounter);\nflow.set(\"lastTotalCounter\", newTotalCounter);\n\nmsg.topic = \"OpenSuse/Try\"\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 100,
+        "wires": [
+            [
+                "5d52ad7f9dea39fa"
+            ]
+        ]
+    },
+    {
+        "id": "1de2db9054d77893",
+        "type": "redis-command",
+        "z": "56231e7c9bca1bef",
+        "server": "a0efbb89.5e42d8",
+        "command": "XADD",
+        "name": "",
+        "topic": "",
+        "params": "[]",
+        "paramsType": "json",
+        "payloadType": "json",
+        "block": false,
+        "x": 890,
+        "y": 340,
+        "wires": [
+            [
+                "6caa7f09f6396aec"
+            ]
+        ]
+    },
+    {
+        "id": "2b2662f977602f7c",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "Gecko",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/Gecko\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 140,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "6caa7f09f6396aec",
+        "type": "debug",
+        "z": "56231e7c9bca1bef",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1060,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "f299a3affa54d1cd",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "Agama",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/Gecko\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 180,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "3a14572b23712295",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "Leap",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/Leap\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 220,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "904eb1ed5e3a9710",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "Tumbleweed",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/Tumbleweed\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 590,
+        "y": 260,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "75a95d0f3cc6878f",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "MicroOS",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/MicroOS\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 300,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "68f56d83b7976d11",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "YasT",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/YasT\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 340,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "5e3daafa77b00c2f",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "Kwii",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/Kwii\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 380,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "7c39dcec85cd849f",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "OBS",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/OBS\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 420,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "ad516d550e217986",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "Zypper",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/Zypper\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 460,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "1d778e2ed2686f3b",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "Zypp",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/Zypp\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 500,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "d21cd5e85e019339",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "snapper",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/snapper\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 580,
+        "y": 540,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "03ecf691f7df2050",
+        "type": "function",
+        "z": "56231e7c9bca1bef",
+        "name": "btrfs",
+        "func": "// Helper function: generate a random number\nfunction getRandom(min, max, decimals = 0) {\n    const factor = Math.pow(10, decimals);\n    return Math.round((Math.random() * (max - min) + min) * factor) / factor;\n}\n\n// Retrieve previous counters (or initialize if not set)\nlet lastShiftCounter = flow.get(\"lastShiftCounter\") || 0;\nlet lastTotalCounter = flow.get(\"lastTotalCounter\") || 0;\n\n// Generate new counters (must be greater than previous)\nlet newShiftCounter = lastShiftCounter + getRandom(1, 5);\nlet newTotalCounter = lastTotalCounter + getRandom(10, 100);\n\n// Randomly determine alarm state\nlet alarmStates = [\"N/A\", \"ERROR\"];\nlet alarm = alarmStates[getRandom(0, alarmStates.length - 1)];\n\n// If alarm is active, force status and mode to 0\nlet status = alarm === \"N/A\" ? getRandom(0, 5) : 0;\nlet mod = alarm === \"N/A\" ? getRandom(0, 1) : 0;\n\n// Main payload structure\nlet data = {\n    status: 1,\n    spindleCurrentRPM: Math.floor(Math.random() * 5000),\n    machineLoadPercent: Math.floor(Math.random() * 100),\n    shiftCounter: (flow.get(\"lastShiftCounter\") || 0) + 1,\n    totalPartCount: (flow.get(\"lastTotalCounter\") || 0) + Math.floor(Math.random() * 50) + 1,\n    feedRate: Math.floor(Math.random() * 20000),\n    overridePercent: Math.floor(Math.random() * 150),\n    positionX: (Math.random() * 2000 - 1000).toFixed(3),\n    positionY: (Math.random() * 2000 - 1000).toFixed(3),\n    positionZ: (Math.random() * 2000 - 1000).toFixed(3),\n    runTimeMillis: Math.floor(Math.random() * 99999999),\n    startTimeMillis: Math.floor(Math.random() * 999999999),\n    mainProgramNumber: Math.floor(Math.random() * 1000),\n    subProgramNumber: Math.floor(Math.random() * 20),\n    toolNumber: Math.floor(Math.random() * 20),\n    alarmStatus: \"N/A\",\n    engine1Speed: Math.floor(Math.random() * 10),\n    engine2Speed: Math.floor(Math.random() * 10),\n    engine3Speed: Math.floor(Math.random() * 10),\n    engine4Speed: Math.floor(Math.random() * 10),\n    engine5Speed: Math.floor(Math.random() * 10),\n    engine6Speed: Math.floor(Math.random() * 10),\n    engine1Current: Math.floor(Math.random() * 100 - 50),\n    engine2Current: Math.floor(Math.random() * 100 - 50),\n    engine3Current: Math.floor(Math.random() * 100 - 50),\n    engine4Current: Math.floor(Math.random() * 100 - 50),\n    engine5Current: Math.floor(Math.random() * 100 - 50),\n    engine6Current: Math.floor(Math.random() * 100 - 50),\n    programNumber: Math.floor(Math.random() * 9000 + 1000)\n};\n\n// Update counters in flow context\nflow.set(\"lastShiftCounter\", data.shiftCounter);\nflow.set(\"lastTotalCounter\", data.totalPartCount);\n\n// Prepare Redis XADD command\nmsg.command = \"XADD\";\nmsg.payload = [\n    \"oSC/btrfs\",  // Redis Stream key\n    \"*\",               // Auto ID\n    \"data\", JSON.stringify(data)  // Entire payload as a JSON string in a single field\n];\n\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 570,
+        "y": 580,
+        "wires": [
+            [
+                "1de2db9054d77893"
+            ]
+        ]
+    },
+    {
+        "id": "a0efbb89.5e42d8",
+        "type": "redis-config",
+        "name": "redis",
+        "options": "{\"host\":\"redis\",\"port\":6379}",
+        "cluster": false,
+        "optionsType": "json"
+    }
+]
