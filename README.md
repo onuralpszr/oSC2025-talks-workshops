@@ -1,6 +1,15 @@
 # Conférence: openSUSE Conferance 2025 - Run your LLM locally and turn them into Agents  🎤
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) \
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](CODE_OF_CONDUCT.md) \
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/onuralpszr/oSC2025-talks-workshops/main.svg)](https://results.pre-commit.ci/latest/github/onuralpszr/oSC2025-talks-workshops/main) \
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff) \
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv) \
+[![🔧 MyPy Test Workflow](https://github.com/onuralpszr/oSC2025-talks-workshops/actions/workflows/mypy-test.yml/badge.svg)](https://github.com/onuralpszr/oSC2025-talks-workshops/actions/workflows/mypy-test.yml)
+
 openSUSE Conference 2025 Workshop and Talks
+
+
 
 ## 🛠️ Workshop: Run your LLM locally and turn them into Agents
 
