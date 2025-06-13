@@ -80,6 +80,42 @@ To run the notebooks and scripts in this repository, you need to install the pro
     ```
     Similarly, refer to `pyproject.toml` for other optional dependency groups.
 
+**🐳 Ollama Installation:**
+
+1. Method Install via Ollama Installation script: (linux)
+    ```bash
+    curl -fsSL https://ollama.com/install.sh | sh
+    ```
+2. Method Install via openSUSE repository command:
+    ```bash
+    zypper install ollama
+    ``` 
+
+**🧪 NodeJS Installation:**
+
+1. Method Install via NVM Installation script: (linux)
+    ```bash
+    # Download and install nvm:
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+    # in lieu of restarting the shell
+    \. "$HOME/.nvm/nvm.sh"
+
+    # Download and install Node.js:
+    nvm install 24
+
+    # Verify the Node.js version:
+    node -v # Should print "v24.2.0".
+    nvm current # Should print "v24.2.0".
+
+    # Verify npm version:
+    npm -v # Should print "11.3.0".
+    ```
+2. Method Install via openSUSE repository command:
+    ```bash
+    zypper install nodejs22
+    ``` 
+
 ### 🐍 Python Scripts
 
 Below is a list of Python scripts included in this repository, with a brief description of their purpose:

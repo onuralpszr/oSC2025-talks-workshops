@@ -1,0 +1,37 @@
+services:
+  langflow:
+  redis:
+    container_name: oSC_redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/db
+    restart: always
+
+  insight:
+    container_name: oSC_redis_insight
+    image: redislabs/redisinsight:1.14.0
+    ports:
+      - "8001:8001"
+    volumes:
+      - redis_insight_data:/data
+    depends_on:
+      - redis
+    restart: always
+
+  node-red:
+    container_name: oSC_node_red
+    image: nodered/node-red:latest
+    ports:
+      - "1880:1880"
+    volumes:
+      - node_red_data:/data
+    environment:
+      - TZ=Europe/Istanbul
+    restart: unless-stopped
+
+volumes:
+  redis_data:
+  redis_insight_data:
+  node_red_data:
