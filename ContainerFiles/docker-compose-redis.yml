@@ -1,5 +1,4 @@
 services:
-  langflow:
   redis:
     container_name: oSC_redis
     image: redis:latest
