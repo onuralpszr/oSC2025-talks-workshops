@@ -89,7 +89,7 @@ To run the notebooks and scripts in this repository, you need to install the pro
 2. Method Install via openSUSE repository command:
     ```bash
     zypper install ollama
-    ``` 
+    ```
 
 **🧪 NodeJS Installation:**
 
@@ -114,7 +114,7 @@ To run the notebooks and scripts in this repository, you need to install the pro
 2. Method Install via openSUSE repository command:
     ```bash
     zypper install nodejs22
-    ``` 
+    ```
 
 ### 🐍 Python Scripts
 

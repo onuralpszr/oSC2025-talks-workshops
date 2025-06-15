@@ -7,6 +7,8 @@ services:
     volumes:
       - redis_data:/db
     restart: always
+    networks:
+      - osc-network
 
   insight:
     container_name: oSC_redis_insight
@@ -18,6 +20,8 @@ services:
     depends_on:
       - redis
     restart: always
+    networks:
+      - osc-network
 
   node-red:
     container_name: oSC_node_red
@@ -29,8 +33,14 @@ services:
     environment:
       - TZ=Europe/Istanbul
     restart: unless-stopped
+    networks:
+      - osc-network
 
 volumes:
   redis_data:
   redis_insight_data:
   node_red_data:
+
+networks:
+  osc-network:
+    driver: bridge
