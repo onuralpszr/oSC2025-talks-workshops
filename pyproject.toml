@@ -44,20 +44,14 @@ keywords = [
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
-    "datasets>=3.6.0",
-    "huggingface-hub>=0.32.6",
     "ipywidgets>=8.1.7",
     "jupyterlab>=4.4.3",
-    "numpy>=2.3.0",
-    "pillow>=11.2.1",
+    "langflow>=1.4.2",
     "smolagents[gradio,litellm,mcp,toolkit,torch]>=1.18.0",
     "torch>=2.6.0",
     "torchvision>=0.21.0",
-    "transformers>=4.52.4",
-    "typer>=0.16.0",
-    "wandb>=0.20.1",
+    "transformers>=4.46.3",
 ]
-
 
 [project.optional-dependencies]
 
