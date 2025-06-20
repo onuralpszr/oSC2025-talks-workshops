@@ -2,7 +2,7 @@
 
 This project demonstrates a simple **Langflow** setup using a local **LLM (Large Language Model)** running through **Ollama**.
 
-The example flow shows how to send user input to the model, process it, and display the result.  
+The example flow shows how to send user input to the model, process it, and display the result.
 It includes multiple usage variations and explains how to import and run the flow.
 
 ---
@@ -29,7 +29,7 @@ This example contains three different flow configurations:
 
 ### 3️⃣ **RAG (Retrieval Augmented Generation) Flow**
 
-**File → Split Text → Ollama Embeddings → Local DB (Ingest)**  
+**File → Split Text → Ollama Embeddings → Local DB (Ingest)**
 **Chat Input → Ollama Embeddings → Local DB (Retrieve) → Parser → Prompt Template → Ollama → Chat Output**
 
 - Implements a **RAG pipeline**.
@@ -84,7 +84,7 @@ This example contains three different flow configurations:
 
 You can easily import this flow into your local Langflow instance:
 
-1. Download or export the `.json` file:  
+1. Download or export the `.json` file:
    Example: `case-1-flow.json`, `case-2-flow.json`, `case-3-rag-flow.json`
 
 2. Open your **Langflow** UI in the browser.

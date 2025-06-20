@@ -76,7 +76,7 @@ This flow demonstrates an **LLM Agent** that can search the web (DuckDuckGo), ge
 
 ## 📥 How to Import This Flow into Langflow
 
-1. Download the `.flow.json` file  
+1. Download the `.flow.json` file
    Example: `case-5-agent-notion-flow.json`
 
 2. Open **Langflow UI**

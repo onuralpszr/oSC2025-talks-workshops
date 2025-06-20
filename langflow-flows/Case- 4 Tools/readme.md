@@ -28,14 +28,14 @@ The agent uses a local LLM (**Ollama**) and three tools:
    - The agent receives user input and decides when and how to use tools.
 
 3. **Available Tools**
-   - **Wikipedia**  
-     - Language: `tr`  
+   - **Wikipedia**
+     - Language: `tr`
      - Fetches Wikipedia content in Turkish.
-   
-   - **Calculator**  
+
+   - **Calculator**
      - Performs basic arithmetic calculations.
 
-   - **DuckDuckGo Search**  
+   - **DuckDuckGo Search**
      - Performs real-time web search using DuckDuckGo.
 
 4. **Ollama LLM**
@@ -60,7 +60,7 @@ The agent uses a local LLM (**Ollama**) and three tools:
 ## ℹ️ Notes
 
 - **Tools are connected** to the agent as a Toolset.
-- The **LLM** used:  
+- The **LLM** used:
   - `llama3.2:3b`
 - Wikipedia language: `tr` (Turkish)
 - No external memory — agent relies on tools + LLM context.
@@ -78,7 +78,7 @@ The agent uses a local LLM (**Ollama**) and three tools:
 
 ## 📥 How to Import This Flow into Langflow
 
-1. Download the `.flow.json` file  
+1. Download the `.flow.json` file
    Example: `case-4-agent-tools-flow.json`
 
 2. Open **Langflow UI**
