@@ -43,7 +43,7 @@ This example contains three different flow configurations:
 - **Chat memory** is **not used** in this flow — each message is processed independently.
 - You can easily add a **memory node** if needed (Langchain or other memory components).
 - The **model name** and **base URL** can be customized in the Ollama node:
-  - Example Base URL: `http://host.docker.internal:11434`
+  - Example Base URL: `http://localhost:11434` , `http://host.docker.internal:11434`
   - Example Models:
     - `smollm2:1.7b`
     - `llama3.2:8b`
@@ -70,7 +70,7 @@ This example contains three different flow configurations:
 You can easily import this flow into your local Langflow instance:
 
 1. Download or export the `.json` file:
-   Example: `Case - 1 _ Work with Local Models.json`
+   Example: `Case1_Work with Local Models.json`
 
 2. Open your **Langflow** UI in the browser.
 

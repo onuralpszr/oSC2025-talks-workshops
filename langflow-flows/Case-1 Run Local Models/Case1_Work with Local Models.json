@@ -3,11 +3,10 @@
         "edges": [
             {
                 "animated": false,
-                "className": "",
                 "data": {
                     "sourceHandle": {
                         "dataType": "TextInput",
-                        "id": "TextInput-xmNiC",
+                        "id": "TextInput-WEBxq",
                         "name": "text",
                         "output_types": [
                             "Message"
@@ -15,27 +14,26 @@
                     },
                     "targetHandle": {
                         "fieldName": "input_value",
-                        "id": "OllamaModel-nw1F2",
+                        "id": "OllamaModel-vkqgR",
                         "inputTypes": [
                             "Message"
                         ],
                         "type": "str"
                     }
                 },
-                "id": "xy-edge__TextInput-xmNiC{\u0153dataType\u0153:\u0153TextInput\u0153,\u0153id\u0153:\u0153TextInput-xmNiC\u0153,\u0153name\u0153:\u0153text\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-OllamaModel-nw1F2{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-nw1F2\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
+                "id": "reactflow__edge-TextInput-WEBxq{\u0153dataType\u0153:\u0153TextInput\u0153,\u0153id\u0153:\u0153TextInput-WEBxq\u0153,\u0153name\u0153:\u0153text\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-OllamaModel-vkqgR{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-vkqgR\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
                 "selected": false,
-                "source": "TextInput-xmNiC",
-                "sourceHandle": "{\u0153dataType\u0153:\u0153TextInput\u0153,\u0153id\u0153:\u0153TextInput-xmNiC\u0153,\u0153name\u0153:\u0153text\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
-                "target": "OllamaModel-nw1F2",
-                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-nw1F2\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
+                "source": "TextInput-WEBxq",
+                "sourceHandle": "{\u0153dataType\u0153:\u0153TextInput\u0153,\u0153id\u0153:\u0153TextInput-WEBxq\u0153,\u0153name\u0153:\u0153text\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
+                "target": "OllamaModel-vkqgR",
+                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-vkqgR\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
             },
             {
                 "animated": false,
-                "className": "",
                 "data": {
                     "sourceHandle": {
                         "dataType": "OllamaModel",
-                        "id": "OllamaModel-nw1F2",
+                        "id": "OllamaModel-vkqgR",
                         "name": "text_output",
                         "output_types": [
                             "Message"
@@ -43,27 +41,26 @@
                     },
                     "targetHandle": {
                         "fieldName": "input_value",
-                        "id": "TextOutput-WzO3a",
+                        "id": "TextOutput-vrzkX",
                         "inputTypes": [
                             "Message"
                         ],
                         "type": "str"
                     }
                 },
-                "id": "xy-edge__OllamaModel-nw1F2{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-nw1F2\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-TextOutput-WzO3a{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153TextOutput-WzO3a\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
+                "id": "reactflow__edge-OllamaModel-vkqgR{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-vkqgR\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-TextOutput-vrzkX{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153TextOutput-vrzkX\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
                 "selected": false,
-                "source": "OllamaModel-nw1F2",
-                "sourceHandle": "{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-nw1F2\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
-                "target": "TextOutput-WzO3a",
-                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153TextOutput-WzO3a\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
+                "source": "OllamaModel-vkqgR",
+                "sourceHandle": "{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-vkqgR\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
+                "target": "TextOutput-vrzkX",
+                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153TextOutput-vrzkX\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
             },
             {
                 "animated": false,
-                "className": "",
                 "data": {
                     "sourceHandle": {
                         "dataType": "TextInput",
-                        "id": "TextInput-lWiBB",
+                        "id": "TextInput-cPorZ",
                         "name": "text",
                         "output_types": [
                             "Message"
@@ -71,27 +68,26 @@
                     },
                     "targetHandle": {
                         "fieldName": "input_value",
-                        "id": "OllamaModel-zLJmp",
+                        "id": "OllamaModel-uUVCh",
                         "inputTypes": [
                             "Message"
                         ],
                         "type": "str"
                     }
                 },
-                "id": "xy-edge__TextInput-lWiBB{\u0153dataType\u0153:\u0153TextInput\u0153,\u0153id\u0153:\u0153TextInput-lWiBB\u0153,\u0153name\u0153:\u0153text\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-OllamaModel-zLJmp{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-zLJmp\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
+                "id": "reactflow__edge-TextInput-cPorZ{\u0153dataType\u0153:\u0153TextInput\u0153,\u0153id\u0153:\u0153TextInput-cPorZ\u0153,\u0153name\u0153:\u0153text\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-OllamaModel-uUVCh{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-uUVCh\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
                 "selected": false,
-                "source": "TextInput-lWiBB",
-                "sourceHandle": "{\u0153dataType\u0153:\u0153TextInput\u0153,\u0153id\u0153:\u0153TextInput-lWiBB\u0153,\u0153name\u0153:\u0153text\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
-                "target": "OllamaModel-zLJmp",
-                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-zLJmp\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
+                "source": "TextInput-cPorZ",
+                "sourceHandle": "{\u0153dataType\u0153:\u0153TextInput\u0153,\u0153id\u0153:\u0153TextInput-cPorZ\u0153,\u0153name\u0153:\u0153text\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
+                "target": "OllamaModel-uUVCh",
+                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-uUVCh\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
             },
             {
                 "animated": false,
-                "className": "",
                 "data": {
                     "sourceHandle": {
                         "dataType": "OllamaModel",
-                        "id": "OllamaModel-zLJmp",
+                        "id": "OllamaModel-uUVCh",
                         "name": "text_output",
                         "output_types": [
                             "Message"
@@ -99,27 +95,26 @@
                     },
                     "targetHandle": {
                         "fieldName": "input_value",
-                        "id": "TextOutput-EEwUQ",
+                        "id": "TextOutput-XTuUe",
                         "inputTypes": [
                             "Message"
                         ],
                         "type": "str"
                     }
                 },
-                "id": "xy-edge__OllamaModel-zLJmp{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-zLJmp\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-TextOutput-EEwUQ{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153TextOutput-EEwUQ\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
+                "id": "reactflow__edge-OllamaModel-uUVCh{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-uUVCh\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-TextOutput-XTuUe{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153TextOutput-XTuUe\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
                 "selected": false,
-                "source": "OllamaModel-zLJmp",
-                "sourceHandle": "{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-zLJmp\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
-                "target": "TextOutput-EEwUQ",
-                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153TextOutput-EEwUQ\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
+                "source": "OllamaModel-uUVCh",
+                "sourceHandle": "{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-uUVCh\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
+                "target": "TextOutput-XTuUe",
+                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153TextOutput-XTuUe\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
             },
             {
                 "animated": false,
-                "className": "",
                 "data": {
                     "sourceHandle": {
                         "dataType": "ChatInput",
-                        "id": "ChatInput-duG3Z",
+                        "id": "ChatInput-CrOsS",
                         "name": "message",
                         "output_types": [
                             "Message"
@@ -127,27 +122,26 @@
                     },
                     "targetHandle": {
                         "fieldName": "input_value",
-                        "id": "OllamaModel-Uj5KZ",
+                        "id": "OllamaModel-17FDw",
                         "inputTypes": [
                             "Message"
                         ],
                         "type": "str"
                     }
                 },
-                "id": "xy-edge__ChatInput-duG3Z{\u0153dataType\u0153:\u0153ChatInput\u0153,\u0153id\u0153:\u0153ChatInput-duG3Z\u0153,\u0153name\u0153:\u0153message\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-OllamaModel-Uj5KZ{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-Uj5KZ\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
+                "id": "reactflow__edge-ChatInput-CrOsS{\u0153dataType\u0153:\u0153ChatInput\u0153,\u0153id\u0153:\u0153ChatInput-CrOsS\u0153,\u0153name\u0153:\u0153message\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-OllamaModel-17FDw{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-17FDw\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}",
                 "selected": false,
-                "source": "ChatInput-duG3Z",
-                "sourceHandle": "{\u0153dataType\u0153:\u0153ChatInput\u0153,\u0153id\u0153:\u0153ChatInput-duG3Z\u0153,\u0153name\u0153:\u0153message\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
-                "target": "OllamaModel-Uj5KZ",
-                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-Uj5KZ\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
+                "source": "ChatInput-CrOsS",
+                "sourceHandle": "{\u0153dataType\u0153:\u0153ChatInput\u0153,\u0153id\u0153:\u0153ChatInput-CrOsS\u0153,\u0153name\u0153:\u0153message\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
+                "target": "OllamaModel-17FDw",
+                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153OllamaModel-17FDw\u0153,\u0153inputTypes\u0153:[\u0153Message\u0153],\u0153type\u0153:\u0153str\u0153}"
             },
             {
                 "animated": false,
-                "className": "",
                 "data": {
                     "sourceHandle": {
                         "dataType": "OllamaModel",
-                        "id": "OllamaModel-Uj5KZ",
+                        "id": "OllamaModel-17FDw",
                         "name": "text_output",
                         "output_types": [
                             "Message"
@@ -155,7 +149,7 @@
                     },
                     "targetHandle": {
                         "fieldName": "input_value",
-                        "id": "ChatOutput-ArhFE",
+                        "id": "ChatOutput-lpF8f",
                         "inputTypes": [
                             "Data",
                             "DataFrame",
@@ -164,18 +158,18 @@
                         "type": "other"
                     }
                 },
-                "id": "xy-edge__OllamaModel-Uj5KZ{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-Uj5KZ\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-ChatOutput-ArhFE{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153ChatOutput-ArhFE\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153DataFrame\u0153,\u0153Message\u0153],\u0153type\u0153:\u0153other\u0153}",
+                "id": "reactflow__edge-OllamaModel-17FDw{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-17FDw\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}-ChatOutput-lpF8f{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153ChatOutput-lpF8f\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153DataFrame\u0153,\u0153Message\u0153],\u0153type\u0153:\u0153other\u0153}",
                 "selected": false,
-                "source": "OllamaModel-Uj5KZ",
-                "sourceHandle": "{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-Uj5KZ\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
-                "target": "ChatOutput-ArhFE",
-                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153ChatOutput-ArhFE\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153DataFrame\u0153,\u0153Message\u0153],\u0153type\u0153:\u0153other\u0153}"
+                "source": "OllamaModel-17FDw",
+                "sourceHandle": "{\u0153dataType\u0153:\u0153OllamaModel\u0153,\u0153id\u0153:\u0153OllamaModel-17FDw\u0153,\u0153name\u0153:\u0153text_output\u0153,\u0153output_types\u0153:[\u0153Message\u0153]}",
+                "target": "ChatOutput-lpF8f",
+                "targetHandle": "{\u0153fieldName\u0153:\u0153input_value\u0153,\u0153id\u0153:\u0153ChatOutput-lpF8f\u0153,\u0153inputTypes\u0153:[\u0153Data\u0153,\u0153DataFrame\u0153,\u0153Message\u0153],\u0153type\u0153:\u0153other\u0153}"
             }
         ],
         "nodes": [
             {
                 "data": {
-                    "id": "TextInput-xmNiC",
+                    "id": "TextInput-WEBxq",
                     "node": {
                         "base_classes": [
                             "Message"
@@ -265,22 +259,21 @@
                     "showNode": true,
                     "type": "TextInput"
                 },
-                "dragging": false,
-                "id": "TextInput-xmNiC",
+                "id": "TextInput-WEBxq",
                 "measured": {
                     "height": 229,
                     "width": 320
                 },
                 "position": {
-                    "x": 1147.9121576082969,
-                    "y": 194.59976680020884
+                    "x": 29.76230311552854,
+                    "y": 486.42684178597887
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "OllamaModel-nw1F2",
+                    "id": "OllamaModel-vkqgR",
                     "node": {
                         "base_classes": [
                             "LanguageModel",
@@ -388,7 +381,7 @@
                                 "trace_as_input": true,
                                 "trace_as_metadata": true,
                                 "type": "str",
-                                "value": "http://host.docker.internal:11434"
+                                "value": "http://localhost:11434"
                             },
                             "code": {
                                 "advanced": true,
@@ -544,12 +537,36 @@
                                 "info": "Refer to https://ollama.com/library for more models.",
                                 "name": "model_name",
                                 "options": [
-                                    "smollm2:latest",
-                                    "smollm2:1.7b",
-                                    "llama3.2:3b",
-                                    "qwen3:latest",
+                                    "PetrosStav/gemma3-tools:4b",
                                     "PetrosStav/gemma3-tools:12b",
-                                    "gemma3:latest"
+                                    "qwen3:30b",
+                                    "qwen3:8b",
+                                    "qwen3:4b",
+                                    "qwen3:1.7b",
+                                    "qwen3:0.6b",
+                                    "gemma3:latest",
+                                    "gemma3:12b",
+                                    "gemma3:4b",
+                                    "qwen2.5:latest",
+                                    "gemma2:27b",
+                                    "gemma2:9b",
+                                    "qwen2.5:32b",
+                                    "deepseek-r1:14b",
+                                    "deepseek-r1:1.5b",
+                                    "deepseek-r1:7b",
+                                    "codegemma:latest",
+                                    "gemma2:2b",
+                                    "llama3.1:latest",
+                                    "deepseek-coder:6.7b",
+                                    "deepseek-coder:latest",
+                                    "llama3.3:latest",
+                                    "qwq:latest",
+                                    "qwen2.5-coder:14b",
+                                    "starcoder2:instruct",
+                                    "llama3.2:latest",
+                                    "llama3.2:1b",
+                                    "mistral-nemo:latest",
+                                    "gemma2:latest"
                                 ],
                                 "options_metadata": [],
                                 "placeholder": "",
@@ -562,7 +579,7 @@
                                 "tool_mode": false,
                                 "trace_as_metadata": true,
                                 "type": "str",
-                                "value": "smollm2:1.7b"
+                                "value": ""
                             },
                             "num_ctx": {
                                 "_input_type": "IntInput",
@@ -932,22 +949,21 @@
                     "showNode": true,
                     "type": "OllamaModel"
                 },
-                "dragging": false,
-                "id": "OllamaModel-nw1F2",
+                "id": "OllamaModel-vkqgR",
                 "measured": {
                     "height": 565,
                     "width": 320
                 },
                 "position": {
-                    "x": 1645.1207947417477,
-                    "y": 199.976789379502
+                    "x": 526.9709402489793,
+                    "y": 491.80386436527203
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "TextOutput-WzO3a",
+                    "id": "TextOutput-vrzkX",
                     "node": {
                         "base_classes": [
                             "Message"
@@ -1039,22 +1055,21 @@
                     "showNode": true,
                     "type": "TextOutput"
                 },
-                "dragging": false,
-                "id": "TextOutput-WzO3a",
+                "id": "TextOutput-vrzkX",
                 "measured": {
                     "height": 229,
                     "width": 320
                 },
                 "position": {
-                    "x": 2153.8968147449486,
-                    "y": 203.5017964464987
+                    "x": 1035.7469602521803,
+                    "y": 495.3288714322687
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "note-Ncirm",
+                    "id": "note-TcmkT",
                     "node": {
                         "description": "# Langflow Basic LLM Flow - Starter Example\n\nThis project demonstrates a simple **Langflow** setup using a local **LLM (Large Language Model)** with **Ollama**.\n\nThe example flow consists of 3 main nodes, which work together to take user input, process it through the LLM, and display the output.",
                         "display_name": "",
@@ -1064,24 +1079,21 @@
                     "type": "note"
                 },
                 "dragging": false,
-                "height": 359,
-                "id": "note-Ncirm",
+                "id": "note-TcmkT",
                 "measured": {
-                    "height": 359,
-                    "width": 324
+                    "height": 354,
+                    "width": 325
                 },
                 "position": {
-                    "x": 1153.3305926396818,
-                    "y": -239.82707498577003
+                    "x": 40.40055793766925,
+                    "y": 92.45360337835774
                 },
-                "resizing": false,
-                "selected": false,
-                "type": "noteNode",
-                "width": 324
+                "selected": true,
+                "type": "noteNode"
             },
             {
                 "data": {
-                    "id": "note-Jksix",
+                    "id": "note-aSIx3",
                     "node": {
                         "description": "## \ud83d\udce5 1. Text Input\n\n- This node collects text input from the user.\n- The input text is passed to the LLM model.\n- In **Playground** mode, you can leave this field empty and use **Chat Input** instead (see section below).",
                         "display_name": "",
@@ -1090,27 +1102,23 @@
                     },
                     "type": "note"
                 },
-                "dragging": false,
-                "height": 324,
-                "id": "note-Jksix",
+                "id": "note-aSIx3",
                 "measured": {
                     "height": 324,
-                    "width": 324
+                    "width": 325
                 },
                 "position": {
-                    "x": 1138.1498544927683,
-                    "y": 444.3912742074151
+                    "x": 20,
+                    "y": 736.2183491931851
                 },
-                "resizing": false,
                 "selected": false,
-                "type": "noteNode",
-                "width": 324
+                "type": "noteNode"
             },
             {
                 "data": {
-                    "id": "note-esiq0",
+                    "id": "note-wxulf",
                     "node": {
-                        "description": "## \ud83e\udd16 2. Ollama Node\n\n- This is the core LLM processing node.\n- It sends the input text to a local LLM running with **Ollama**.\n- Key parameters:\n    - **Base URL**: `http://host.docker.internal:11434`\n    - **Model Name**: `smallmix:21.7b`\n    - **System Message**: (optional) add system instructions for the model.\n\n- The Ollama Node returns the model\u2019s generated response.",
+                        "description": "## \ud83e\udd16 2. Ollama Node\n\n- This is the core LLM processing node.\n- It sends the input text to a local LLM running with **Ollama**.\n- Key parameters:\n    - **Base URL**: \n`http://localhost:11434` \n     - **Base URL for Docker**: \n`http://host.docker.internal:11434`\n    - **Model Name**: `smallmix:21.7b`\n    - **System Message**: (optional) add system instructions for the model.\n\n- The Ollama Node returns the model\u2019s generated response.",
                         "display_name": "",
                         "documentation": "",
                         "template": {}
@@ -1118,21 +1126,21 @@
                     "type": "note"
                 },
                 "dragging": false,
-                "id": "note-esiq0",
+                "id": "note-wxulf",
                 "measured": {
-                    "height": 414,
+                    "height": 441,
                     "width": 325
                 },
                 "position": {
-                    "x": 1641.7056843684275,
-                    "y": 774.9349446401005
+                    "x": 528.5524845009425,
+                    "y": 1076.7553288764373
                 },
                 "selected": false,
                 "type": "noteNode"
             },
             {
                 "data": {
-                    "id": "note-cffo7",
+                    "id": "note-CIgZ1",
                     "node": {
                         "description": "## \ud83d\udce4 3. Text Output\n\n- This node displays the generated response from the LLM.\n- It shows the output on the screen or in the Langflow interface.\n- In **Playground** mode, you can leave this field empty and use **Chat Output** instead.",
                         "display_name": "",
@@ -1142,21 +1150,21 @@
                     "type": "note"
                 },
                 "dragging": false,
-                "id": "note-cffo7",
+                "id": "note-CIgZ1",
                 "measured": {
                     "height": 324,
                     "width": 325
                 },
                 "position": {
-                    "x": 2161.5778620452766,
-                    "y": 545.4888726155258
+                    "x": 1048.3422277396671,
+                    "y": 814.3829200612206
                 },
                 "selected": false,
                 "type": "noteNode"
             },
             {
                 "data": {
-                    "id": "OllamaModel-zLJmp",
+                    "id": "OllamaModel-uUVCh",
                     "node": {
                         "base_classes": [
                             "LanguageModel",
@@ -1264,7 +1272,7 @@
                                 "trace_as_input": true,
                                 "trace_as_metadata": true,
                                 "type": "str",
-                                "value": "http://host.docker.internal:11434"
+                                "value": "http://localhost:11434"
                             },
                             "code": {
                                 "advanced": true,
@@ -1420,12 +1428,36 @@
                                 "info": "Refer to https://ollama.com/library for more models.",
                                 "name": "model_name",
                                 "options": [
-                                    "smollm2:latest",
-                                    "smollm2:1.7b",
-                                    "llama3.2:3b",
-                                    "qwen3:latest",
+                                    "PetrosStav/gemma3-tools:4b",
                                     "PetrosStav/gemma3-tools:12b",
-                                    "gemma3:latest"
+                                    "qwen3:30b",
+                                    "qwen3:8b",
+                                    "qwen3:4b",
+                                    "qwen3:1.7b",
+                                    "qwen3:0.6b",
+                                    "gemma3:latest",
+                                    "gemma3:12b",
+                                    "gemma3:4b",
+                                    "qwen2.5:latest",
+                                    "gemma2:27b",
+                                    "gemma2:9b",
+                                    "qwen2.5:32b",
+                                    "deepseek-r1:14b",
+                                    "deepseek-r1:1.5b",
+                                    "deepseek-r1:7b",
+                                    "codegemma:latest",
+                                    "gemma2:2b",
+                                    "llama3.1:latest",
+                                    "deepseek-coder:6.7b",
+                                    "deepseek-coder:latest",
+                                    "llama3.3:latest",
+                                    "qwq:latest",
+                                    "qwen2.5-coder:14b",
+                                    "starcoder2:instruct",
+                                    "llama3.2:latest",
+                                    "llama3.2:1b",
+                                    "mistral-nemo:latest",
+                                    "gemma2:latest"
                                 ],
                                 "options_metadata": [],
                                 "placeholder": "",
@@ -1438,7 +1470,7 @@
                                 "tool_mode": false,
                                 "trace_as_metadata": true,
                                 "type": "str",
-                                "value": "smollm2:latest"
+                                "value": ""
                             },
                             "num_ctx": {
                                 "_input_type": "IntInput",
@@ -1808,22 +1840,21 @@
                     "showNode": true,
                     "type": "OllamaModel"
                 },
-                "dragging": false,
-                "id": "OllamaModel-zLJmp",
+                "id": "OllamaModel-uUVCh",
                 "measured": {
                     "height": 565,
                     "width": 320
                 },
                 "position": {
-                    "x": 3156.5547028513774,
-                    "y": 198.86763188338247
+                    "x": 2038.4048483586091,
+                    "y": 490.69470686915247
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "TextInput-lWiBB",
+                    "id": "TextInput-cPorZ",
                     "node": {
                         "base_classes": [
                             "Message"
@@ -1913,22 +1944,21 @@
                     "showNode": true,
                     "type": "TextInput"
                 },
-                "dragging": false,
-                "id": "TextInput-lWiBB",
+                "id": "TextInput-cPorZ",
                 "measured": {
                     "height": 229,
                     "width": 320
                 },
                 "position": {
-                    "x": 2776.9688192314684,
-                    "y": 200.61145943506958
+                    "x": 1658.8189647387,
+                    "y": 492.4385344208396
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "TextOutput-EEwUQ",
+                    "id": "TextOutput-XTuUe",
                     "node": {
                         "base_classes": [
                             "Message"
@@ -2020,22 +2050,21 @@
                     "showNode": true,
                     "type": "TextOutput"
                 },
-                "dragging": false,
-                "id": "TextOutput-EEwUQ",
+                "id": "TextOutput-XTuUe",
                 "measured": {
                     "height": 229,
                     "width": 320
                 },
                 "position": {
-                    "x": 3543.1913958429254,
-                    "y": 193.09947338985924
+                    "x": 2425.041541350157,
+                    "y": 484.9265483756293
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "note-n1zUd",
+                    "id": "note-TaIy5",
                     "node": {
                         "description": "## \ud83d\udee0\ufe0f System Prompt\n\n- The **System Prompt** defines how the LLM should behave.\n- It sets the tone, style, and role of the assistant.\n- Used to guide the model\u2019s responses (e.g. formal tone, expert role, helpful style).\n- Helps ensure consistent and controlled outputs across interactions.\n",
                         "display_name": "",
@@ -2045,21 +2074,21 @@
                     "type": "note"
                 },
                 "dragging": false,
-                "id": "note-n1zUd",
+                "id": "note-TaIy5",
                 "measured": {
                     "height": 324,
                     "width": 325
                 },
                 "position": {
-                    "x": 3155.3440908928305,
-                    "y": 794.6910634175669
+                    "x": 2046.1463285464606,
+                    "y": 1072.4115585512773
                 },
                 "selected": false,
                 "type": "noteNode"
             },
             {
                 "data": {
-                    "id": "OllamaModel-Uj5KZ",
+                    "id": "OllamaModel-17FDw",
                     "node": {
                         "base_classes": [
                             "LanguageModel",
@@ -2167,7 +2196,7 @@
                                 "trace_as_input": true,
                                 "trace_as_metadata": true,
                                 "type": "str",
-                                "value": "http://host.docker.internal:11434"
+                                "value": "http://localhost:11434"
                             },
                             "code": {
                                 "advanced": true,
@@ -2323,12 +2352,36 @@
                                 "info": "Refer to https://ollama.com/library for more models.",
                                 "name": "model_name",
                                 "options": [
-                                    "smollm2:latest",
-                                    "smollm2:1.7b",
-                                    "llama3.2:3b",
-                                    "qwen3:latest",
+                                    "PetrosStav/gemma3-tools:4b",
                                     "PetrosStav/gemma3-tools:12b",
-                                    "gemma3:latest"
+                                    "qwen3:30b",
+                                    "qwen3:8b",
+                                    "qwen3:4b",
+                                    "qwen3:1.7b",
+                                    "qwen3:0.6b",
+                                    "gemma3:latest",
+                                    "gemma3:12b",
+                                    "gemma3:4b",
+                                    "qwen2.5:latest",
+                                    "gemma2:27b",
+                                    "gemma2:9b",
+                                    "qwen2.5:32b",
+                                    "deepseek-r1:14b",
+                                    "deepseek-r1:1.5b",
+                                    "deepseek-r1:7b",
+                                    "codegemma:latest",
+                                    "gemma2:2b",
+                                    "llama3.1:latest",
+                                    "deepseek-coder:6.7b",
+                                    "deepseek-coder:latest",
+                                    "llama3.3:latest",
+                                    "qwq:latest",
+                                    "qwen2.5-coder:14b",
+                                    "starcoder2:instruct",
+                                    "llama3.2:latest",
+                                    "llama3.2:1b",
+                                    "mistral-nemo:latest",
+                                    "gemma2:latest"
                                 ],
                                 "options_metadata": [],
                                 "placeholder": "",
@@ -2341,7 +2394,7 @@
                                 "tool_mode": false,
                                 "trace_as_metadata": true,
                                 "type": "str",
-                                "value": "smollm2:latest"
+                                "value": ""
                             },
                             "num_ctx": {
                                 "_input_type": "IntInput",
@@ -2711,22 +2764,21 @@
                     "showNode": true,
                     "type": "OllamaModel"
                 },
-                "dragging": false,
-                "id": "OllamaModel-Uj5KZ",
+                "id": "OllamaModel-17FDw",
                 "measured": {
                     "height": 565,
                     "width": 320
                 },
                 "position": {
-                    "x": 4499.6515089188815,
-                    "y": 193.02835091306255
+                    "x": 3381.5016544261134,
+                    "y": 484.85542589883255
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "ChatInput-duG3Z",
+                    "id": "ChatInput-CrOsS",
                     "node": {
                         "base_classes": [
                             "Message"
@@ -3025,22 +3077,21 @@
                     "showNode": false,
                     "type": "ChatInput"
                 },
-                "dragging": false,
-                "id": "ChatInput-duG3Z",
+                "id": "ChatInput-CrOsS",
                 "measured": {
                     "height": 66,
                     "width": 192
                 },
                 "position": {
-                    "x": 4153.756991680865,
-                    "y": 194.28294884985098
+                    "x": 3035.607137188097,
+                    "y": 486.110023835621
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "ChatOutput-ArhFE",
+                    "id": "ChatOutput-lpF8f",
                     "node": {
                         "base_classes": [
                             "Message"
@@ -3336,22 +3387,21 @@
                     "showNode": false,
                     "type": "ChatOutput"
                 },
-                "dragging": false,
-                "id": "ChatOutput-ArhFE",
+                "id": "ChatOutput-lpF8f",
                 "measured": {
                     "height": 66,
                     "width": 192
                 },
                 "position": {
-                    "x": 4965.0514845635835,
-                    "y": 189.99038539544503
+                    "x": 3846.9016300708154,
+                    "y": 481.817460381215
                 },
                 "selected": false,
                 "type": "genericNode"
             },
             {
                 "data": {
-                    "id": "note-9fKkA",
+                    "id": "note-9XfXq",
                     "node": {
                         "description": "## \ud83d\udcac Chat Input\n\n- Used to send messages to the LLM in **chat format**.\n- Preferred when building interactive chatbots or assistant UIs.\n- Replaces the need for a static **Text Input**.\n\n---\n\n## \ud83d\udcac Chat Output\n\n- Displays the LLM\u2019s response in **chat format**.\n- Preferred for dynamic chat experiences.\n- Replaces the need for a static **Text Output**.\n\n---\n",
                         "display_name": "",
@@ -3360,37 +3410,30 @@
                     },
                     "type": "note"
                 },
-                "dragging": false,
-                "height": 485,
-                "id": "note-9fKkA",
+                "id": "note-9XfXq",
                 "measured": {
-                    "height": 485,
-                    "width": 373
+                    "height": 537,
+                    "width": 325
                 },
                 "position": {
-                    "x": 5200.034169138186,
-                    "y": 188.63028609769822
+                    "x": 4081.8843146454183,
+                    "y": 480.45736108346824
                 },
-                "resizing": false,
                 "selected": false,
-                "type": "noteNode",
-                "width": 373
+                "type": "noteNode"
             }
         ],
         "viewport": {
-            "x": -2461.752393041548,
-            "y": 237.3455112217443,
-            "zoom": 0.8112174205859071
+            "x": 237.88495729388796,
+            "y": 176.4297140125675,
+            "zoom": 0.766309980103891
         }
     },
-    "description": "This example flow demonstrates a basic usage of Langflow with a local LLM (Large Language Model) running through Ollama.\nThe flow shows how to send user input to the model and display the generated response.\n\nIt contains three variations:\n\nText Input \u2192 Ollama \u2192 Text Output\n\nTakes direct text input from the user.\n\nSends the input to the LLM via the Ollama node.\n\nDisplays the model\u2019s response in Text Output.\n\nSuitable for simple Playground usage.\n\nText Input \u2192 Ollama (with System Prompt) \u2192 Text Output\n\nSame as the first flow, but with an additional System Prompt.\n\nThe system prompt guides the model\u2019s tone and behavior.\n\nUseful for generating more controlled and consistent responses.\n\nChat Input \u2192 Ollama \u2192 Chat Output\n\nDesigned for chat-based interaction.\n\nSupports multi-turn conversations.\n\nReplaces Text Input and Text Output with Chat Input and Chat Output.\n\nSuitable for building interactive chatbots or assistant UIs.\n\nNote: This flow does not use any chat memory at this stage \u2014 each message is processed statelessly.\nThe model does not maintain conversation history between messages.\n\nYou can adjust the model name and Base URL in the Ollama node to match your local environment.",
+    "description": "Building Powerful Solutions with Language Models.",
     "endpoint_name": null,
-    "id": "c412d65a-9b1b-4fcf-b831-1c59af6a69af",
+    "id": "3569a727-6520-4309-b24b-ccc0af644b12",
     "is_component": false,
-    "last_tested_version": "1.4.3",
-    "name": "Case - 1 : Work with Local Models",
-    "tags": [
-        "assistants",
-        "agents"
-    ]
+    "last_tested_version": "1.4.2",
+    "name": "Case1_Work with Local Models",
+    "tags": []
 }
