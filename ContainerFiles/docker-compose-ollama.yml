@@ -1,0 +1,68 @@
+services:
+
+  ollama:
+    container_name: oSC_ollama
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_HOST=0.0.0.0
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  langflow:
+    container_name: oSC_langflow
+    image: langflowai/langflow:latest
+    ports:
+      - "7860:7860"
+    pull_policy: always
+    environment:
+      - LANGFLOW_CONFIG_DIR=/app/langflow
+    volumes:
+      - langflow_data:/app/langflow
+
+  redis:
+    container_name: oSC_redis
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/db
+    restart: always
+
+  insight:
+    container_name: oSC_redis_insight
+    image: redislabs/redisinsight:1.14.0
+    ports:
+      - "8001:8001"
+    volumes:
+      - redis_insight_data:/data
+    depends_on:
+      - redis
+    restart: always
+
+  node-red:
+    container_name: oSC_node_red
+    image: nodered/node-red:latest
+    ports:
+      - "1880:1880"
+    volumes:
+      - node_red_data:/data
+    environment:
+      - TZ=Europe/Istanbul
+    restart: unless-stopped
+
+volumes:
+  ollama_data:
+  langflow_data:
+  redis_data:
+  redis_insight_data:
+  node_red_data:
